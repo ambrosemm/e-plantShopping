@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './ProductList.css'
 import CartItem from './CartItem';
-import addItem from './CartSlice.jsx';
+import {addItem, removeItem, updateQuantity} from './CartSlice';
 
 
 
@@ -14,6 +14,7 @@ function ProductList({ onHomeClick }) {
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
+        console.log("okay!")
         dispatch(addItem(product));
         setAddedToCart((prevState) => ({
            ...prevState,
