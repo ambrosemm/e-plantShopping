@@ -23,6 +23,10 @@ function ProductList({ onHomeClick }) {
     const cartItems = useSelector((state) => state.cart.items);
 
     const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+    
+    const inCartItems = (name) => {
+        return cartItems.find(item => item.name === name);
+    }
 
     const plantsArray = [
         {
@@ -302,7 +306,7 @@ function ProductList({ onHomeClick }) {
                         <img className="product-image" src={plant.image} alt={plant.name} />
                         <div className="product-title">{plant.name}</div>
                         {/*Similarly like the above plant.name show other details like description and cost*/}
-                        <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                        <button  className={["product-button", "product-button-disabled"][inCartItems(plant.name) ? 1 : 0]} disabled={inCartItems(plant.name) ? 1 : 0} onClick={() => handleAddToCart(plant)}>Add to Cart</button>
             </div>
             ))}
         </div>

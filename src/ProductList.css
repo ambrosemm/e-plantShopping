@@ -211,6 +211,10 @@ body {
     cursor: pointer;
   }
   
+  .product-button-disabled {
+    border: none;
+    background:none;
+  }
   .product-button:hover {
     background-color: #45a049;
   }
